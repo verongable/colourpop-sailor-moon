@@ -30,6 +30,7 @@ p {
 }
 
 /* Header Styles */
+
 header {
     display: flex;
     position: sticky;
@@ -39,12 +40,13 @@ header {
     z-index: 1000;
     background-color: white;
 }
+
 body.dark-theme header{
   background-color: #000 !important;  /* ensure it can’t be overridden */
 }
+
 header img {
-    height: auto;
-    max-width: 230px;
+    width: 200px;
 }
 
 .left-header {
@@ -136,14 +138,61 @@ button:hover,
 /* Main Styles */
 
 .hero {
-    display: flex;
-    background-color: #FEE3E5;
+  position: relative;
+  overflow: hidden;
+  background-color: #FEE3E5;
 }
 
-.left-hero {
-    flex: 1;
-    min-width: 300px;
+/* background image takes full width */
+.hero-bg {
+  display: block;
+  width: 43vw;
 }
+
+/* content overlays the image */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 65%;
+  height: 100%;
+  justify-content: center;
+}
+
+.hero-content p {
+  line-height: 1.8;
+  font-size: 15px;
+  margin-top: -1%;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 9px 24px;
+  background-color: #D9758E;
+  border: 3px solid #C46880;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: lowercase;
+  box-shadow: 2px 3px 5px rgba(0,0,0,.15);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  font-size: 12px;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+  background-color: #c96480;
+}
+
+.hero-content button:hover {
+  transform: scale(1.05);
+  background-color: #c96480;
+} 
 
 .left-hero img {
     width: 100%;
@@ -157,12 +206,11 @@ button:hover,
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 40px 0;
+    align-items: center;
 }
 
 .right-hero p {
     text-align: center;
-    font-size: 1.25rem;
     width: 498px;
     margin: -15px auto 30px auto;
     line-height: 38px;
@@ -319,10 +367,10 @@ input#luckyNumber {
 
 .categories {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     justify-content: center;
     padding-left: 0;
-    margin: 80px auto;
+    margin: 40px auto 80px auto;
     flex-wrap: wrap;
 }
 
@@ -348,8 +396,7 @@ input#luckyNumber {
 article {
     display: flex;
     margin: 50px auto 100px auto;
-    gap: 50px;
-    width: 980px;
+    width: 1200px;
 }
 
 .product-images {
@@ -361,7 +408,7 @@ article {
 }
 
 .product-images > img {
-    width: 475px;
+    width: 100%;
     border-radius: 15px;
 }
 
@@ -371,7 +418,7 @@ article {
 }
 
 .thumbnail-images img {
-    width: 50%;
+    width: 49%;
     border-radius: 15px;
 }
 
@@ -395,6 +442,7 @@ article {
 .product-details hr {
     border-top: 2px solid #000;
     border-bottom-style: hidden;
+    width: 100%;
 }
 
 .product-details p {
@@ -440,7 +488,6 @@ article {
 
 .contact {
     display: flex;
-    gap: 50px;
     max-width: 1050px;
     margin: 100px auto 160px auto;
     justify-content: space-between;
@@ -451,14 +498,12 @@ article {
 
 .contact h2 {
     font-size: 64px;
-    width: 350px;
     margin-top: 0;
 }
 
 .contact p {
     font-size: 24px;
     line-height: 45px;
-    width: 360px;
 }
 
 .contact-right form {
@@ -480,7 +525,6 @@ article {
 .contact-right input[type="tel"] {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-family: "Onest", sans-serif;
@@ -500,7 +544,6 @@ label.radio {
 .contact-right textarea {
   grid-column: span 2;
   padding: 10px;
-  font-size: 16px;
   border-radius: 7px;
   border: 1px solid #ccc;
   font-family: "Onest", sans-serif;
@@ -559,7 +602,6 @@ footer {
     background-color: #D9758E;
     color: white;
     justify-content: space-between;
-    padding: 40px 130px 50px 85px;
     font-size: 14px;
 }
 
@@ -571,10 +613,6 @@ footer {
 .footer-left p {
     color: white;
     font-size: 12px;
-}
-
-.footer-left img {
-    margin: -35px 0 0 -10px;
 }
 
 .footer-left .copyright {
@@ -644,10 +682,316 @@ body.dark-theme hr {
 }
 
 /* Media Queries */
-@media only screen and (max-width: 893px) {
+@media only screen and (max-width: 540px) {
+    .promotion {
+        flex-direction: column;
+        gap: 20px;
+        padding: 35px 60px;
+    }
 
+    .promotion img {
+        min-width: 180px;
+    }
+
+    .promo-content span.bold-text {
+        font-size: 60px;
+    }
+
+    .contact-left p { 
+        width: 270px;
+    }
 }
-@media only screen and (max-width: 957px) {
+
+@media only screen and (max-width: 740px) {
+    footer {
+        flex-direction: column;
+        padding: 45px;
+    }
+
+    .footer-left img {
+        width: 175px;
+        margin: -35px 0 -25px -14px;
+    }
+
+    .footer-right {
+        gap: 130px;
+    }
+}
+
+@media only screen and (min-width: 741px) {
+    .footer-right {
+        gap: 60px;
+    }
+}
+
+
+@media only screen and (min-width: 541px) {
+    .contact-left p {
+        width: 360px;
+    }
+
+    footer {
+        padding: 40px 130px 50px 85px;
+    }
+
+    .footer-left img {
+    margin: -35px 0 0 -10px;
+}
+}
+
+@media only screen and (max-width: 700px) {
+    .hero-content img {
+        width: 90%;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+        margin-top: -1%;
+        width: 300px;
+    }
+
+    #contact-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact {
+        gap: 30px;
+    }
+
+    .contact h2 {
+        font-size: 34px;
+    }
+
+    .contact p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .contact-right {
+        width: 100%;
+    }
+
+    .contact-right label {
+        font-size: 15px;
+    }
+
+    .contact-right input[type="text"], .contact-right input[type="email"], .contact-right input[type="tel"] { 
+        font-size: 15px;
+    }
+
+    .contact-right textarea {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 701px) {
+    .contact {
+        gap: 50px;
+    }
+
+    .contact-right input[type="text"], .contact-right input[type="email"], .contact-right input[type="tel"] { 
+        font-size: 16px;
+    }
+
+    .contact-right textarea {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 720px) {
+    .promotion {
+        gap: 40px;
+        padding: 40px 60px;
+    }
+
+    .promotion img {
+        min-width: 200px;
+    }
+
+    .promo-content span.bold-text {
+        font-size: 9vw;
+    }
+}
+
+@media (min-width: 701px) and (max-width: 800px) {
+    .hero-content p {
+        width: 338px;
+        font-size: 14px;
+    }
+
+    .hero-btn {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 800px) {
+   .featured-products h2 { 
+        font-size: 50px;
+    }
+
+    .categories {
+        gap: 20px;
+    }
+
+    .categories button {
+        font-size: 18px;
+        min-width: 155px;
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .contact {
+        max-width: 60%;
+    }  
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+    .contact {
+        max-width: 70%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    article {
+        flex-direction: column;
+        margin: 50px auto 45px auto;
+    }
+
+    .product-images {
+        align-items: center ;
+    }
+
+    .thumbnail-images {
+        justify-content: center;
+    }
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-details button {
+        width: 100%;
+    }
+
+    .divider {
+        width: 84%;
+    }
+}
+
+
+@media (min-width: 801px) and (max-width: 900px) {
+    .hero-content p {
+        width: 374px;
+        font-size: 15px;
+        line-height: 2;
+    }
+
+    .hero-btn {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 950px) {
+    .hero-content p {
+        width: 400px;
+        line-height: 2.3;
+        font-size: 16px;
+    }
+
+    .hero-btn {
+        font-size: 15px;
+    }
+
+    .featured-products {
+        padding-top: 70px;
+    }
+
+    .categories {
+        width: 70%;
+        margin: 35px auto 75px auto;
+    }
+
+    .product-details h3 {
+        font-size: 28px;
+    }
+
+    .product-details p:first-of-type {
+        font-size: 18px;
+    }
+
+    .product-details p:nth-of-type(2) {
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 951px) and (max-width: 1200px) {
+
+    .hero-content {
+        gap: 10px;
+    }
+    
+    .hero-content p {
+        line-height: 2.1;
+        font-size: 18px;
+        width: 500px;
+    }
+
+    .hero-btn {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1450px) {
+    .hero-content {
+        gap: 5px;
+    }
+
+    .hero-content p {
+        font-size: 21px;
+        width: 600px;
+    }
+
+    .hero-btn {
+        padding: 10px 33px;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 1319px) {
+    article {
+        gap: 30px;
+    }
+}
+
+@media only screen and (min-width: 1320px) {
+    article {
+        gap: 50px;
+    }
+}
+
+@media only screen and (min-width: 1451px) {
+    .hero-content {
+        gap: 6px;
+    }
+    
+    .hero-content p {
+        line-height: 1.9;
+        font-size: 25px;
+        width: 700px;
+    }
+
+    .hero-btn {
+        padding: 10px 33px;
+        font-size: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 1013px) {
     header {
         flex-direction: column;
         height: 100%;
@@ -672,10 +1016,17 @@ body.dark-theme hr {
 
     .nav-links {
         margin-top: -8px;
+        padding: 0;
     }
 
     .utility-links {
         padding: 0;
+    }
+}
+
+@media (min-width: 951px) and (max-width: 1015px) {
+    .categories {
+        width: 93%;
     }
 }
 
@@ -687,34 +1038,44 @@ body.dark-theme hr {
     img#heart-icon, img#user-icon, img#shopping-icon {
         width: 26px;
     }
+    
+}
 
+@media only screen and (max-width: 1300px) {
     .categories {
-        width: 93%;
-    }
-    article {
         width: 85%;
     }
 
+    article {
+        width: 85%;
+    }
+}
+
+@media only screen and (min-width: 801px) {
     .product-images > img {
         width: 100%;
     }
+}
 
+@media (min-width: 801px) and (max-width: 1015px) {
     .thumbnail-images img {
         width: 49%;
     }
 }
 
-@media only screen and (max-width: 1227px) {
-    .nav-links li a {
-        font-size: 18px;
+@media only screen and (min-width: 1197px) {
+    .hero-bg {
+        width: 32vw;
     }
-    
+}
+
+@media (min-width: 801px) and (max-width: 1227px) {
     .contact {
         max-width: 575px;
-        padding: 40px;
-        flex-direction: column;
-        align-items: center;
     }
+}
+
+@media (min-width: 701px) and (max-width: 1227px) {
     .contact h2 {
         font-size: 54px;
     }
@@ -724,9 +1085,27 @@ body.dark-theme hr {
         line-height: 35px;
 
     }
+}
+
+@media only screen and (max-width: 1227px) {
+    .nav-links li a {
+        font-size: 18px;
+    }
+    
+    .contact {
+        padding: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .contact-left {
         text-align: center;
     }
+
+    .contact-left p {
+        margin: 0 auto;
+    }
+
     .contact-right form {
         gap: 30px 30px;
     }
